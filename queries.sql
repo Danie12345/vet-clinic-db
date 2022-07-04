@@ -9,3 +9,7 @@ select name from animals where
 select name from animals where
     neutered = true
     and escape_attempts < 3;
+
+select date_of_birth from animals where
+    name in ('Agumon', 'Pikachu');
+
