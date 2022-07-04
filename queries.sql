@@ -18,3 +18,6 @@ select name, escape_attempts from animals where
 
 select * from animals where
     neutered = true;
+
+select * from animals where
+    name != 'Gabumon';
