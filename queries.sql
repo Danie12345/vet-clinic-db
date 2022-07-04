@@ -13,3 +13,5 @@ select name from animals where
 select date_of_birth from animals where
     name in ('Agumon', 'Pikachu');
 
+select name, escape_attempts from animals where
+    weight_kg > 10.5;
