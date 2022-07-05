@@ -34,3 +34,5 @@ select count(*) from animals;
 
 select count(*) from animals
 where escape_attempts = 0;
+
+select avg(weight_kg) from animals;
