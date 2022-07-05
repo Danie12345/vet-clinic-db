@@ -30,3 +30,10 @@ select * from animals where
 
 --  project1
 
+begin;
+savepoint sp0;
+update animals
+set species = 'unspecified';
+select * from animals;
+rollback to sp0;
+
