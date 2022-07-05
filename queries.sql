@@ -46,3 +46,8 @@ set species = 'pokemon'
 where species is null;
 commit;
 select * from animals;
+
+begin;
+delete from animals;
+rollback;
+select * from animals;
