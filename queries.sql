@@ -31,3 +31,6 @@ select * from animals where
 --  project1
 
 select count(*) from animals;
+
+select count(*) from animals
+where escape_attempts = 0;
