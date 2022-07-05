@@ -36,3 +36,14 @@ select count(*) from animals
 where escape_attempts = 0;
 
 select avg(weight_kg) from animals;
+
+select neutered from (
+    select count(neutered) as counted, neutered from animals
+    group by neutered
+) as neuters
+where counted = (
+    select max(counted) from (
+        select count(neutered) as counted, neutered from animals
+        group by neutered
+    ) as neuters
+);
