@@ -50,3 +50,8 @@ where counted = (
 
 select max(weight_kg), min(weight_kg), species from animals
 group by species;
+
+select avg(escape_attempts) as average, species from animals
+where date_of_birth < '2000-01-01'
+and date_of_birth > '1990-12-31'
+group by species;
