@@ -47,3 +47,6 @@ where counted = (
         group by neutered
     ) as neuters
 );
+
+select max(weight_kg), min(weight_kg), species from animals
+group by species;
