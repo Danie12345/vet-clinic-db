@@ -1,5 +1,7 @@
 /*Queries that provide answers to the questions from all projects.*/
 
+--  project0
+
 select * from animals where name like '%mon';
 
 select name from animals where 
@@ -25,3 +27,6 @@ select * from animals where
 select * from animals where
     weight_kg >= 10.4
     and weight_kg <= 17.3;
+
+--  project1
+
