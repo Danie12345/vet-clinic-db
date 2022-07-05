@@ -64,3 +64,5 @@ set weight_kg = weight_kg * (-1)
 where weight_kg < 0;
 commit;
 select * from animals;
+
+select count(*) from animals;
