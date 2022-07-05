@@ -37,3 +37,12 @@ set species = 'unspecified';
 select * from animals;
 rollback to sp0;
 
+begin;
+update animals
+set species = 'digimon'
+where name like '%mon';
+update animals
+set species = 'pokemon'
+where species is null;
+commit;
+select * from animals;
