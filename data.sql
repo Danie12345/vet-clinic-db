@@ -53,3 +53,34 @@ set species_id = (
     where name = 'Pokemon'
 )
 where substring(name, position('mon' in name),3) != 'mon';
+
+update animals
+set owners_id = (
+    select id from owners
+    where full_name = 'Sam Smith'
+)
+where name = 'Agumon';
+update animals
+set owners_id = (
+    select id from owners
+    where full_name = 'Jennifer Orwell'
+)
+where name in ('Gabumon', 'Pikachu');
+update animals
+set owners_id = (
+    select id from owners
+    where full_name = 'Bob'
+)
+where name in ('Devimon', 'Plantmon');
+update animals
+set owners_id = (
+    select id from owners
+    where full_name = 'Melody Pond'
+)
+where name in ('Charmander', 'Squirtle', 'Blossom');
+update animals
+set owners_id = (
+    select id from owners
+    where full_name = 'Dean Winchester'
+)
+where name in ('Angemon', 'Boarmon');
