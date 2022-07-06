@@ -120,3 +120,12 @@ select c.species, count(c.species) from (
         on a.species_id = s.id
 ) as c
 group by c.species;
+
+select pet from (
+    select o.full_name as owner, a.name as pet, s.name as species from owners o
+    join animals a
+        on a.owners_id = o.id
+    join species s
+        on a.species_id = s.id
+) as foo
+where owner = 'Jennifer Orwell' and species = 'Digimon';
