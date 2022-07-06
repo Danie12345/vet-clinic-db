@@ -129,3 +129,10 @@ select pet from (
         on a.species_id = s.id
 ) as foo
 where owner = 'Jennifer Orwell' and species = 'Digimon';
+
+select pet from (
+    select o.full_name as owner, a.name as pet, a.escape_attempts as escapes from owners o
+    join animals a
+        on a.owners_id = o.id
+) as foo
+where owner = 'Dean Winchester' and escapes = 0;
