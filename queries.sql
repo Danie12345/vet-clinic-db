@@ -109,3 +109,7 @@ join species
         where name = 'Pokemon'
     )
 group by animals.name;
+
+select o.full_name as owner, a.name as pet from owners o
+full join animals a
+    on a.owners_id = o.id;
