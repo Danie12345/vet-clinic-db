@@ -31,3 +31,15 @@ create table species(
     name text not null,
     primary key (id)
 );
+
+select * from animals
+order by id;
+alter table animals
+drop species;
+select * from animals;
+alter table animals
+    add column species_id int
+    references species(id);
+alter table animals
+    add column owners_id int
+    references owners(id);
