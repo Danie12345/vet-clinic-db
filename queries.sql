@@ -91,3 +91,13 @@ select avg(escape_attempts) as average, species from animals
 where date_of_birth < '2000-01-01'
 and date_of_birth > '1990-12-31'
 group by species;
+
+-- project2
+
+select name from animals
+join owners
+    on animals.owners_id = (
+        select id from owners
+        where full_name = 'Melody Pond'
+    )
+group by name;
