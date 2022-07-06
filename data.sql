@@ -40,3 +40,16 @@ insert into
 values
     ('Pokemon'),
     ('Digimon');
+
+update animals
+set species_id = (
+    select id from species
+    where name = 'Digimon'
+)
+where substring(name, position('mon' in name),3) = 'mon'
+update animals
+set species_id = (
+    select id from species
+    where name = 'Pokemon'
+)
+where substring(name, position('mon' in name),3) != 'mon';
