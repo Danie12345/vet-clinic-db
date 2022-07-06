@@ -113,3 +113,10 @@ group by animals.name;
 select o.full_name as owner, a.name as pet from owners o
 full join animals a
     on a.owners_id = o.id;
+
+select c.species, count(c.species) from (
+    select s.name as species, a.name as animal from species s
+    full join animals a
+        on a.species_id = s.id
+) as c
+group by c.species;
