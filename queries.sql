@@ -101,3 +101,11 @@ join owners
         where full_name = 'Melody Pond'
     )
 group by name;
+
+select animals.name from animals
+join species
+    on animals.species_id = (
+        select id from species
+        where name = 'Pokemon'
+    )
+group by animals.name;
