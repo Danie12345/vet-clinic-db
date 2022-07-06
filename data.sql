@@ -4,7 +4,7 @@
 
 insert into 
     animals (name, date_of_birth, escape_attempts, neutered, weight_kg)
-VALUES
+values
     ('Agumon', '2020-02-03', 0, true, 10.23),
     ('Gabumon', '2018-11-15', 2, true, 8.00),
     ('Pikachu', '2021-01-07', 1, false, 15.04),
@@ -14,7 +14,7 @@ VALUES
 
 insert into 
     animals (name, date_of_birth, escape_attempts, neutered, weight_kg)
-VALUES
+values
     ('Charmander', '2020-02-08', 0, false, -11.00),
     ('Plantmon', '2021-11-15', 2, true, -5.70),
     ('Squirtle', '1993-04-02', 3, false, -12.13),
@@ -27,7 +27,7 @@ VALUES
 
 insert into 
     owners (full_name, age)
-VALUES
+values
     ('Sam Smith', 34),
     ('Jennifer Orwell', 19),
     ('Bob', 45),
