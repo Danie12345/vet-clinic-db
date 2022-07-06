@@ -30,6 +30,42 @@ select * from animals where
 
 --  project1
 
+begin;
+savepoint sp0;
+update animals
+set species = 'unspecified';
+select * from animals;
+rollback to sp0;
+select * from animals;
+
+begin;
+update animals
+set species = 'digimon'
+where name like '%mon';
+update animals
+set species = 'pokemon'
+where species is null;
+commit;
+select * from animals;
+
+begin;
+delete from animals;
+rollback;
+select * from animals;
+
+begin;
+delete from animals
+where date_of_birth > '2022-01-01';
+savepoint sp0;
+update animals
+set weight_kg = weight_kg * (-1);
+rollback to sp0;
+update animals
+set weight_kg = weight_kg * (-1)
+where weight_kg < 0;
+commit;
+select * from animals;
+
 select count(*) from animals;
 
 select count(*) from animals
