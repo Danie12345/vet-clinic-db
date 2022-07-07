@@ -136,3 +136,13 @@ select pet from (
         on a.owners_id = o.id
 ) as foo
 where owner = 'Dean Winchester' and escapes = 0;
+
+select owner, count(*) as "pets count" from (
+    select count(o.full_name), o.full_name as owner, a.name as pet from owners o
+    full join animals a
+        on a.owners_id = o.id
+    group by owner, pet
+) as f
+group by owner
+order by "pets count" desc
+limit 1;
