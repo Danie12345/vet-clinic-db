@@ -190,3 +190,11 @@ where id = (
     order by count(animals_id) desc
     limit 1
 );
+
+select a.name as "animal" from visits vi
+join animals a
+    on a.id = vi.animals_id
+where
+    vi.vets_id = (select ve.id from vets ve where ve.name = 'Maisy Smith')
+order by vi.date_of_visit asc
+limit 1;
