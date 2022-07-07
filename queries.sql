@@ -146,3 +146,16 @@ select owner, count(*) as "pets count" from (
 group by owner
 order by "pets count" desc
 limit 1;
+
+-- project3
+
+select name from animals
+where id = (
+    select animals_id from visits v
+    where v.vets_id = (
+        select id from vets
+        where name = 'William Tatcher'
+    )
+    order by v.date_of_visit desc
+    limit 1
+);
