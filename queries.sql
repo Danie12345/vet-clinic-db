@@ -182,3 +182,11 @@ where
     vi.date_of_visit > '2020-04-01' 
     and vi.date_of_visit < '2020-08-30'
     and vi.vets_id = (select ve.id from vets ve where ve.name = 'Stephanie Mendez');
+
+select name from animals
+where id = (
+    select animals_id from visits
+    group by animals_id
+    order by count(animals_id) desc
+    limit 1
+);
