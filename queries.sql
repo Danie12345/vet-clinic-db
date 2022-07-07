@@ -159,3 +159,12 @@ where id = (
     order by v.date_of_visit desc
     limit 1
 );
+
+select count(*) as "total animals" from (
+    select animals_id from visits v
+    where v.vets_id = (
+        select id from vets
+        where name = 'Stephanie Mendez'
+    )
+    group by animals_id
+) as total;
