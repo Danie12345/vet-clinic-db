@@ -94,3 +94,19 @@ values
     ('Maisy Smith', 26, '2019-01-17'),
     ('Stephanie Mendez', 64, '1981-05-04'),
     ('Jack Harkness', 38, '2008-06-08');
+
+insert into 
+    specializations (species_id, vets_id)
+select s.id as species_id , v.id as vets_id from vets v
+join species s
+on v.name = 'William Tatcher' and s.name = 'Pokemon';
+insert into 
+    specializations (species_id, vets_id)
+select s.id as species_id , v.id as vets_id from vets v
+join species s
+on v.name = 'Stephanie Mendez' and s.name in ('Pokemon', 'Digimon');
+insert into 
+    specializations (species_id, vets_id)
+select s.id as species_id , v.id as vets_id from vets v
+join species s
+on v.name = 'Jack Harkness' and s.name = 'Digimon';
