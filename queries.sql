@@ -174,3 +174,11 @@ left join specializations sp
     on v.id = sp.vets_id
 left join species s
     on s.id = sp.species_id;
+
+select a.name as "animal", vi.date_of_visit as "visit on" from visits vi
+join animals a
+    on a.id = vi.animals_id
+where
+    vi.date_of_visit > '2020-04-01' 
+    and vi.date_of_visit < '2020-08-30'
+    and vi.vets_id = (select ve.id from vets ve where ve.name = 'Stephanie Mendez');
