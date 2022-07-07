@@ -91,3 +91,58 @@ select avg(escape_attempts) as average, species from animals
 where date_of_birth < '2000-01-01'
 and date_of_birth > '1990-12-31'
 group by species;
+
+-- project2
+
+select name from animals
+join owners
+    on animals.owners_id = (
+        select id from owners
+        where full_name = 'Melody Pond'
+    )
+group by name;
+
+select animals.name from animals
+join species
+    on animals.species_id = (
+        select id from species
+        where name = 'Pokemon'
+    )
+group by animals.name;
+
+select o.full_name as owner, a.name as pet from owners o
+full join animals a
+    on a.owners_id = o.id;
+
+select c.species, count(c.species) from (
+    select s.name as species, a.name as animal from species s
+    full join animals a
+        on a.species_id = s.id
+) as c
+group by c.species;
+
+select pet from (
+    select o.full_name as owner, a.name as pet, s.name as species from owners o
+    join animals a
+        on a.owners_id = o.id
+    join species s
+        on a.species_id = s.id
+) as foo
+where owner = 'Jennifer Orwell' and species = 'Digimon';
+
+select pet from (
+    select o.full_name as owner, a.name as pet, a.escape_attempts as escapes from owners o
+    join animals a
+        on a.owners_id = o.id
+) as foo
+where owner = 'Dean Winchester' and escapes = 0;
+
+select owner, count(*) as "pets count" from (
+    select count(o.full_name), o.full_name as owner, a.name as pet from owners o
+    full join animals a
+        on a.owners_id = o.id
+    group by owner, pet
+) as f
+group by owner
+order by "pets count" desc
+limit 1;
