@@ -168,3 +168,9 @@ select count(*) as "total animals" from (
     )
     group by animals_id
 ) as total;
+
+select v.name as "vet name", s.name as "specialties" from vets v
+left join specializations sp
+    on v.id = sp.vets_id
+left join species s
+    on s.id = sp.species_id;
