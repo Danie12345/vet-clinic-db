@@ -198,3 +198,11 @@ where
     vi.vets_id = (select ve.id from vets ve where ve.name = 'Maisy Smith')
 order by vi.date_of_visit asc
 limit 1;
+
+select vi.date_of_visit, a.*, ve.* from visits vi
+join animals a
+    on a.id = vi.animals_id
+join vets ve
+    on vi.vets_id = ve.id
+order by vi.date_of_visit desc
+limit 1;
