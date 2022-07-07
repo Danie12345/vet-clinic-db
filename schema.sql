@@ -58,3 +58,9 @@ create table specializations(
     species_id int,
     vets_id int
 );
+
+create table visits(
+    animals_id int not null,
+    vets_id int not null,
+    date_of_visit date not null
+);
