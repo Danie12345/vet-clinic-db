@@ -53,3 +53,8 @@ create table vets(
     date_of_graduation date not null,
     primary key (id)
 );
+
+create table specializations(
+    species_id int,
+    vets_id int
+);
