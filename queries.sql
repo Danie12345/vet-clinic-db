@@ -146,3 +146,87 @@ select owner, count(*) as "pets count" from (
 group by owner
 order by "pets count" desc
 limit 1;
+
+-- project3
+
+select name from animals
+where id = (
+    select animals_id from visits v
+    where v.vets_id = (
+        select id from vets
+        where name = 'William Tatcher'
+    )
+    order by v.date_of_visit desc
+    limit 1
+);
+
+select count(*) as "total animals" from (
+    select animals_id from visits v
+    where v.vets_id = (
+        select id from vets
+        where name = 'Stephanie Mendez'
+    )
+    group by animals_id
+) as total;
+
+select v.name as "vet name", s.name as "specialties" from vets v
+left join specializations sp
+    on v.id = sp.vets_id
+left join species s
+    on s.id = sp.species_id;
+
+select a.name as "animal", vi.date_of_visit as "visit on" from visits vi
+join animals a
+    on a.id = vi.animals_id
+where
+    vi.date_of_visit > '2020-04-01' 
+    and vi.date_of_visit < '2020-08-30'
+    and vi.vets_id = (select ve.id from vets ve where ve.name = 'Stephanie Mendez');
+
+select name from animals
+where id = (
+    select animals_id from visits
+    group by animals_id
+    order by count(animals_id) desc
+    limit 1
+);
+
+select a.name as "animal" from visits vi
+join animals a
+    on a.id = vi.animals_id
+where
+    vi.vets_id = (select ve.id from vets ve where ve.name = 'Maisy Smith')
+order by vi.date_of_visit asc
+limit 1;
+
+select vi.date_of_visit, a.*, ve.* from visits vi
+join animals a
+    on a.id = vi.animals_id
+join vets ve
+    on vi.vets_id = ve.id
+order by vi.date_of_visit desc
+limit 1;
+
+select count(*) as "unprofessional visits" from visits vi
+join animals a
+    on vi.animals_id = a.id
+where a.species_id not in (
+    select coalesce(specializations.species_id,0) from vets
+    left outer join specializations
+        on (specializations.vets_id = vets.id)
+    where vets.id = vi.vets_id
+);
+
+select name from (
+    select s.name, count(s.name) from species s
+    join animals a
+        on s.id = a.species_id
+    join visits vi
+        on a.id = vi.animals_id
+    join vets ve
+        on vi.vets_id = ve.id
+    where ve.name = 'Maisy Smith'
+    group by s.name
+) as f
+order by f.count desc
+limit 1;
