@@ -206,3 +206,13 @@ join vets ve
     on vi.vets_id = ve.id
 order by vi.date_of_visit desc
 limit 1;
+
+select count(*) as "unprofessional visits" from visits vi
+join animals a
+    on vi.animals_id = a.id
+where a.species_id not in (
+    select coalesce(specializations.species_id,0) from vets
+    left outer join specializations
+        on (specializations.vets_id = vets.id)
+    where vets.id = vi.vets_id
+);
