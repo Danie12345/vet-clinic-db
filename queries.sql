@@ -216,3 +216,17 @@ where a.species_id not in (
         on (specializations.vets_id = vets.id)
     where vets.id = vi.vets_id
 );
+
+select name from (
+    select s.name, count(s.name) from species s
+    join animals a
+        on s.id = a.species_id
+    join visits vi
+        on a.id = vi.animals_id
+    join vets ve
+        on vi.vets_id = ve.id
+    where ve.name = 'Maisy Smith'
+    group by s.name
+) as f
+order by f.count desc
+limit 1;
