@@ -74,3 +74,8 @@ create index visits_animals_id_hash on visits
 (
     animals_id asc
 );
+
+create index visits_vets_id_hash on visits
+(
+    vets_id asc
+);
