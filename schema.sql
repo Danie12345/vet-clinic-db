@@ -79,3 +79,8 @@ create index visits_vets_id_hash on visits
 (
     vets_id asc
 );
+
+create index owners_email_hash on owners
+(
+    email asc
+);
