@@ -214,3 +214,9 @@ values
         (select v.id from vets v where v.name = 'William Tatcher'),
         '2021-01-11'
     )
+
+-- project4
+
+-- run 3 times
+insert into visits (animals_id, vets_id, date_of_visit) select * from (select id from animals) animal_ids, (select id from vets) vets_ids, generate_series('1980-01-01'::timestamp, '2021-01-01', '4 hours') visit_timestamp;
+insert into owners (full_name, email) select 'Owner ' || generate_series(1,2500000), 'owner_' || generate_series(1,2500000) || '@mail.com';

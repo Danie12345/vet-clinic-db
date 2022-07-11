@@ -64,3 +64,13 @@ create table visits(
     vets_id int not null,
     date_of_visit date not null
 );
+
+-- project4
+
+alter table owners add column email varchar(120);
+alter table owners alter column age drop not null;
+
+create index visits_animals_id_hash on visits
+(
+    animals_id asc
+);
